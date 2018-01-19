@@ -14,5 +14,9 @@ cd build
 # Custom: ../install
 cmake .. -DCMAKE_INSTALL_PREFIX=../install
 
+## Verbose on
+# cmake .. -DCMAKE_INSTALL_PREFIX=../install -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON
+# make VERBOSE=1
+
 make
 make install

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+rm -Rf build
+rm -Rf install
+
 mkdir build
 mkdir install
 

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 
 # Project
-project(002-static-library)
+project(004-executable-with-static-library)
 
 # Directories
 set(example_BIN_DIR bin)

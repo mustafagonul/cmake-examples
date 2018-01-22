@@ -14,6 +14,10 @@ set(library_SOURCES ${example_SRC_DIR}/library.cpp)
 set(library_HEADERS ${example_INC_DIR}/library.h)
 set(executable_SOURCES ${example_SRC_DIR}/main.cpp)
 
+# Setting RPATH
+# See https://cmake.org/Wiki/CMake_RPATH_handling
+set(CMAKE_INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/${example_LIB_DIR})
+
 # Add library to project
 add_library(library SHARED ${library_SOURCES})
 
@@ -25,7 +29,6 @@ add_executable(executable ${executable_SOURCES})
 
 # Linking
 target_link_libraries(executable PRIVATE library)
-
 
 # Install
 install(TARGETS executable DESTINATION ${example_BIN_DIR})

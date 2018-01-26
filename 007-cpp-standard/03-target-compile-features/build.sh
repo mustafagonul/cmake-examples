@@ -18,5 +18,5 @@ cmake .. -DCMAKE_INSTALL_PREFIX=../install
 # cmake .. -DCMAKE_INSTALL_PREFIX=../install -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON
 make VERBOSE=1
 
-make
+# make
 make install

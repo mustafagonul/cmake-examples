@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 
 # Project
-project(001-executable)
+project(009-clang)
 
 # Executable source files
 set(executable_SOURCES src/main.cpp)

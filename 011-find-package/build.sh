@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd "$(dirname "$0")"
+
 rm -Rf build
 rm -Rf install
 
@@ -12,7 +14,7 @@ cd build
 # cmake ..
 
 # Custom: ../install
-cmake .. -DCMAKE_INSTALL_PREFIX=../install
+cmake .. -DCMAKE_INSTALL_PREFIX=../install -DCMAKE_BUILD_TYPE=Debug
 
 ## Verbose on
 # cmake .. -DCMAKE_INSTALL_PREFIX=../install -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON

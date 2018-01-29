@@ -14,7 +14,7 @@ cd build
 # cmake ..
 
 # Custom: ../install
-cmake .. -DCMAKE_INSTALL_PREFIX=../install -DCMAKE_BUILD_TYPE=Debug
+cmake .. -DCMAKE_INSTALL_PREFIX=../install
 
 ## Verbose on
 # cmake .. -DCMAKE_INSTALL_PREFIX=../install -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON

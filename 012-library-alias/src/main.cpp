@@ -1,5 +1,4 @@
 #include "library.h"
-#include <cmath>
 
 int main()
 {

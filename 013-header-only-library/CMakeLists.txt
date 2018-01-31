@@ -22,7 +22,7 @@ target_include_directories(library INTERFACE ${PROJECT_SOURCE_DIR}/${example_INC
 add_executable(executable ${executable_SOURCES})
 
 # Include directories for executable
-target_include_directories(executable PUBLIC ${PROJECT_SOURCE_DIR}/${example_INC_DIR})
+target_link_libraries(executable library)
 
 # Install
 install(TARGETS executable DESTINATION ${example_BIN_DIR})

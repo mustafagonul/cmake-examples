@@ -17,7 +17,7 @@ set(library1_HEADERS ${example_INC_DIR}/library1.h)
 add_library(library1 STATIC ${library1_SOURCES})
 
 # Include directories
-target_include_directories(library1 PUBLIC ${PROJECT_SOURCE_DIR}/${example_INC_DIR})
+target_include_directories(library1 PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/${example_INC_DIR})
 
 # Install
 install(TARGETS library1 DESTINATION ${example_LIB_DIR})

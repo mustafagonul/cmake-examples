@@ -22,7 +22,7 @@ set(CMAKE_INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/${example_LIB_DIR})
 add_library(library SHARED ${library_SOURCES})
 
 # Include directories
-target_include_directories(library PUBLIC ${PROJECT_SOURCE_DIR}/${example_INC_DIR})
+target_include_directories(library PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/${example_INC_DIR})
 
 # Add executable to project
 add_executable(executable ${executable_SOURCES})

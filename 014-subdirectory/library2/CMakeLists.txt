@@ -15,7 +15,7 @@ set(library2_HEADERS ${example_INC_DIR}/library2.h)
 add_library(library2 INTERFACE)
 
 # Include directories for library
-target_include_directories(library2 INTERFACE ${PROJECT_SOURCE_DIR}/${example_INC_DIR})
+target_include_directories(library2 INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/${example_INC_DIR})
 
 # Install
 install(FILES ${library2_HEADERS} DESTINATION ${example_INC_DIR})

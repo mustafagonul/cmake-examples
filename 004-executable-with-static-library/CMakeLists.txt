@@ -18,7 +18,7 @@ set(executable_SOURCES ${example_SRC_DIR}/main.cpp)
 add_library(library STATIC ${library_SOURCES})
 
 # Include directories
-target_include_directories(library PUBLIC ${PROJECT_SOURCE_DIR}/${example_INC_DIR})
+target_include_directories(library PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/${example_INC_DIR})
 
 # Add executable to project
 add_executable(executable ${executable_SOURCES})

@@ -8,11 +8,11 @@ find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
 # Qt Tools
 set(CMAKE_AUTOMOC ON)
-SET(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOUIC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # Library
-add_library(mainwindow mainwindow.cpp)
+add_library(mainwindow STATIC mainwindow.cpp)
 
 # Links
 target_link_libraries(mainwindow Qt5::Widgets)

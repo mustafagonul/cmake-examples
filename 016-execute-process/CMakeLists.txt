@@ -7,9 +7,17 @@ project(016-execute-process)
 set(executable_SOURCES src/main.cpp)
 set(executable_DATA ${CMAKE_CURRENT_BINARY_DIR}/data)
 
+# Echo
+find_program(echo_APP echo)
+if(echo_APP)
+  message(STATUS "Echo found at ${echo_APP}")
+else()
+  message(FATAL_ERROR "Echo not found!")
+endif()
+
 # Command
 execute_process(
-  COMMAND echo "Hello World!"
+  COMMAND ${echo_APP} "Hello World!"
   OUTPUT_FILE ${executable_DATA}
 )
 

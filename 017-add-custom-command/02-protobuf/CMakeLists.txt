@@ -21,10 +21,19 @@ set(proto_PATH   ${CMAKE_CURRENT_SOURCE_DIR}/${example_SRC_DIR}/${proto}${proto_
 set(proto_HEADER ${GENERATED_FILES_DIR}/${proto}.pb.h)
 set(proto_SOURCE ${GENERATED_FILES_DIR}/${proto}.pb.cc)
 
+# protoc
+find_program(protoc_APP protoc)
+if(protoc_APP)
+  message(STATUS "Protoc found at ${protoc_APP}")
+else()
+  message(FATAL_ERROR "Protoc not found!")
+endif()
+
+
 # Custom command
 add_custom_command(
   OUTPUT ${proto_SOURCE} ${proto_HEADER}
-  COMMAND protoc ARGS -I=${CMAKE_CURRENT_SOURCE_DIR}/${example_SRC_DIR} --cpp_out=${GENERATED_FILES_DIR} ${proto_PATH}
+  COMMAND ${protoc_APP} ARGS -I=${CMAKE_CURRENT_SOURCE_DIR}/${example_SRC_DIR} --cpp_out=${GENERATED_FILES_DIR} ${proto_PATH}
   DEPENDS ${proto_PATH}
   COMMENT "Generating code: ${proto}"
 )

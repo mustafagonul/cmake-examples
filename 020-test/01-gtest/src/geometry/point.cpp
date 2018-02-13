@@ -29,9 +29,7 @@ void point<Type>::sub(point_const_reference p) noexcept
 }
 
 
-
-template class matrix<double>;
-template class matrix<float>;
+template class point<int>;
 
 
 } // geometry

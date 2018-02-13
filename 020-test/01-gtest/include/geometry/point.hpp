@@ -1,15 +1,15 @@
 #pragma once
 
-#include <iosfwd>
+#include <iostream>
 
 
 namespace geometry {
 
-  template class <typename Type>
+  template <typename Type>
   class point {
   public:
     using value_type = Type;
-    using reference = Type&
+    using reference = Type&;
     using const_reference = Type const&;
     using point_type = point<value_type>;
     using point_reference = point<value_type>&;
@@ -30,9 +30,10 @@ namespace geometry {
     value_type y;
     value_type z;
 
-    friend std::ostream& operator<<(std::ostream&, point_const_reference p);
-  }
+    friend std::ostream& operator<<(std::ostream& os, point_const_reference p) {
+      os << "( x = " << p.x << ", y = " << p.y << ", z = " << p.z << " )";
+    }
+  };
 
-  extern template class point<double>;
-  extern template class point<float>;
+  extern template class point<int>;
 }

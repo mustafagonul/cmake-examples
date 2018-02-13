@@ -1,12 +1,13 @@
-#include "gtest/gtest.h"
-
+#include <gtest/gtest.h>
+#include "environment.hpp"
 
 int main(int argc, char** argv)
 {
-  auto*new matrix_env
-
   ::testing::InitGoogleTest(&argc, argv);
-  ::testing::AddGlobalTestEnvironment();
+
+  auto env = new Environment();
+  auto tenv = ::testing::AddGlobalTestEnvironment(env);
+  g_environment = dynamic_cast<Environment*>(tenv);
 
   return RUN_ALL_TESTS();
 }

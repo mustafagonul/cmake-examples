@@ -1,32 +1,49 @@
 cmake_minimum_required(VERSION 2.8)
 
 # Project
-project(011-find-package)
+project(020-test-01)
 
-# Search Boost
-find_package(Boost REQUIRED COMPONENTS filesystem system)
+# Directories
+set(example_BIN_DIR bin)
+set(example_INC_DIR include)
+set(example_LIB_DIR lib)
+set(example_SRC_DIR src)
+set(example_TST_DIR test)
 
-# Check Boost
-if(Boost_FOUND)
-  message ("Boost Found")
-else()
-  message (FATAL_ERROR "Cannot Find Boost")
-endif()
+# Library files
+set(library_SOURCES ${example_SRC_DIR}/geometry/point.cpp)
+set(library_HEADERS ${example_INC_DIR}/geometry/point.hpp)
 
-# Executable source files
-set(executable_SOURCES src/main.cpp)
-set(executable_DATA src/data)
+# Test files
+set(library_TESTS
+  ${example_TST_DIR}/main.cpp
+  ${example_TST_DIR}/environment.cpp
+  ${example_TST_DIR}/geometry/point.cpp
+)
 
-# Executable
-add_executable(executable ${executable_SOURCES})
+# Setup testing
+enable_testing()
+find_package(GTest REQUIRED)
 
+# Add library to project
+add_library(library STATIC ${library_SOURCES})
 
 # Include directories
-target_include_directories(executable PRIVATE ${Boost_INCLUDE_DIRS})
+target_include_directories(library PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/${example_INC_DIR})
 
-# Libraries
-target_link_libraries(executable PRIVATE ${Boost_SYSTEM_LIBRARY} ${Boost_FILESYSTEM_LIBRARY})
+# Test executable
+add_executable(library-test ${library_TESTS})
+target_include_directories(library-test PUBLIC ${GTEST_INCLUDE_DIR})
+target_link_libraries(library-test library ${GTEST_BOTH_LIBRARIES})
+
+# Test directive 
+add_test(NAME library-test COMMAND library-test)
 
 # Install
-install(TARGETS executable DESTINATION bin)
-install(FILES ${executable_DATA} DESTINATION bin)
+install(TARGETS library DESTINATION ${example_LIB_DIR})
+install(TARGETS library-test DESTINATION ${example_BIN_DIR}) # unnecessary
+foreach(library_HEADER ${library_HEADERS})
+  get_filename_component(library_HEADER_DIR ${library_HEADERS} DIRECTORY)
+  install(FILES ${library_HEADERS} DESTINATION ${library_HEADER_DIR})
+endforeach()
+

@@ -38,7 +38,7 @@ TEST(library_test, point_constructor_3)
   EXPECT_EQ(p.z, z);
 }
 
-TEST(library_test, point_constructor_add)
+TEST(library_test, point_add)
 {
   auto x1 = g_environment->get();
   auto y1 = g_environment->get();
@@ -57,7 +57,7 @@ TEST(library_test, point_constructor_add)
   EXPECT_EQ(p1.z, z1 + z2);
 }
 
-TEST(library_test, point_constructor_sub)
+TEST(library_test, point_sub)
 {
   auto x1 = g_environment->get();
   auto y1 = g_environment->get();

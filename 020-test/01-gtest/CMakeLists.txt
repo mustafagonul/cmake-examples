@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 2.8)
 # Project
 project(020-test-01)
 
+#--------------------------------------------------------------------------------------------------
 # Directories
 set(example_BIN_DIR bin)
 set(example_INC_DIR include)
@@ -21,15 +22,17 @@ set(library_TESTS
   ${example_TST_DIR}/geometry/point.cpp
 )
 
-# Setup testing
-enable_testing()
-find_package(GTest REQUIRED)
-
+#--------------------------------------------------------------------------------------------------
 # Add library to project
 add_library(library STATIC ${library_SOURCES})
 
 # Include directories
 target_include_directories(library PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/${example_INC_DIR})
+
+#--------------------------------------------------------------------------------------------------
+# Setup testing
+enable_testing()
+find_package(GTest REQUIRED)
 
 # Test executable
 add_executable(library-test ${library_TESTS})
@@ -39,11 +42,12 @@ target_link_libraries(library-test library ${GTEST_BOTH_LIBRARIES})
 # Test directive 
 add_test(NAME library-test COMMAND library-test)
 
+#--------------------------------------------------------------------------------------------------
 # Install
 install(TARGETS library DESTINATION ${example_LIB_DIR})
 install(TARGETS library-test DESTINATION ${example_BIN_DIR}) # unnecessary
 foreach(library_HEADER ${library_HEADERS})
   get_filename_component(library_HEADER_DIR ${library_HEADERS} DIRECTORY)
-  install(FILES ${library_HEADERS} DESTINATION ${library_HEADER_DIR})
+  install(FILES ${library_HEADER} DESTINATION ${library_HEADER_DIR})
 endforeach()
 

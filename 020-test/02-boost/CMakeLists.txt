@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 
 # Project
-project(020-test-01)
+project(020-test-02)
 
 #--------------------------------------------------------------------------------------------------
 # Directories

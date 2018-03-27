@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 
 # Project
-project(011-find-package)
+project(011-find-package-01-boost)
 
 # Search Boost
 find_package(Boost REQUIRED COMPONENTS filesystem system)

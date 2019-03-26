@@ -47,7 +47,7 @@ add_test(NAME library-test COMMAND library-test)
 install(TARGETS library DESTINATION ${example_LIB_DIR})
 install(TARGETS library-test DESTINATION ${example_BIN_DIR}) # unnecessary
 foreach(library_HEADER ${library_HEADERS})
-  get_filename_component(library_HEADER_DIR ${library_HEADERS} DIRECTORY)
+  get_filename_component(library_HEADER_DIR ${library_HEADER} DIRECTORY)
   install(FILES ${library_HEADER} DESTINATION ${library_HEADER_DIR})
 endforeach()
 
